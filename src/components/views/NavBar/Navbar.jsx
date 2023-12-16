@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import * as actions from '../../../redux/actions/indexActions'
 import LanguageButtons from './LanguageButtons'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import StatusArea from '../workArea/StatusArea'
 import languagesText from '../../../LanguagesData/LanguagesText'
-import {notify} from 'react-notify-toast'
+import { notify } from 'react-notify-toast'
 // import firebase from 'firebase'
-// import SignInScreen from '../userForms/SignInScreen'
+import SignInScreen from '../userForms/SignInScreen'
 import SaveResultButton from './SaveResultButton.jsx'
 
 function mapStateToProps(store) {
@@ -56,7 +56,7 @@ class Navbar extends Component {
         firebase.auth().signOut()
             .then(res => {
                 notify.show(`User ${this.props.userName} has logged out`, 'warning')
-                this.setState({signingIn: false})
+                this.setState({ signingIn: false })
                 this.props.setIsSigned(false)
                 this.props.setUserName('guest')
                 this.props.setTimerWorking(false)
@@ -71,7 +71,7 @@ class Navbar extends Component {
 
         let userName = this.props.userName
         let isSigning = this.props.isSigning
-
+        console.log(Link)
         let addTxt = languagesText[this.props.language].header.titleTxt
         return (
             <header className='navbar'>
@@ -80,27 +80,29 @@ class Navbar extends Component {
                     <h4 className={'summary-field'}>
                         {userName === 'guest' ?
                             addTxt :
-                            <strong style={{'color': 'black'}}> Welcome {userName}</strong>}</h4>
+                            <strong style={{ 'color': 'black' }}> Welcome {userName}</strong>}</h4>
                 </div>
                 {/* {this.props.testRendered && <StatusArea/>} */}
-               <div className='nav-buttons'>
-                   {this.props.testRendered && this.props.isSigned && <SaveResultButton/>}
+                <div className='nav-buttons'>
+                    {this.props.testRendered && this.props.isSigned && <SaveResultButton />}
 
-                {this.props.isSigned ?
-                    <button onClick={this.signingOut.bind(this)}
-                    >Sign Out </button>
-                    : <button
-                        onClick={this.loginClicked.bind(this)}
-                        style={{display: isSigning ? 'none' : 'block'}}
-                        className={'summary-field link'}>Login
-                    </button>}
-                {this.props.isSigning && <SignInScreen/>}
-               </div>
+                    {this.props.isSigned ?
+                        <button onClick={this.signingOut.bind(this)}
+                        >Sign Out </button>
+                        : <button
+                            onClick={this.loginClicked.bind(this)}
+                            style={{ display: isSigning ? 'none' : 'block' }}
+                            className={'summary-field link'}>Login
+                        </button>}
+                    {this.props.isSigning && <SignInScreen />}
+                </div>
                 < LanguageButtons
-                    strings={this.state.langButtonTxt}/>
+                    strings={this.state.langButtonTxt} />
+                <a href='/' className='button'>Help</a>
                 {/* < Link
                     className={'button'}
-                    to={'/'}>Help </Link> */}
+                    to='/'>
+                        Help </Link> */}
 
 
             </header>

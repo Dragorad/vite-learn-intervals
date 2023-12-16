@@ -1,1 +1,0 @@
-export const configAPI = 'AIzaSyBrJA-A-KL1QzUa1MRbgLSIcDEw_5Wyu7Y '

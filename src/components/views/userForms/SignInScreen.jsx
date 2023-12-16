@@ -1,12 +1,14 @@
 import React from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import firebase from 'firebase'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+
 // import {uiConfig} from '../../../appWorkers/firebaseWorker'
 import {setIsSigning, setIsSigned, setUserName} from "../../../redux/actions/indexActions"
 import {connect} from "react-redux"
 import { notify } from 'react-notify-toast'
 
-export const uiConfig =  props => ({
+const uiConfig =  props => ({
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.

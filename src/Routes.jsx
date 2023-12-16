@@ -12,8 +12,8 @@ const Routes = (props) => (
     <Route exact path='/signedIn' component={ControlForm} />
     <Route exact path='/signUp' component={UserForm} />
     <Route exact path='/control-form' component={ControlForm} />
-    <Redirect from='/index' to='/'/>
-    <Redirect from='/home' to='/'/>
+    <Route path='/index' render={() => <Redirect to='/' />} /> 
+    <Route path='/home' render={() => <Redirect to='/' />} /> 
     <Route path='/work-pane' component={WorkPaneRedux} />
        <div>404 page not found</div>
   </Switch>

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { connect } from 'react-redux'
 import dataWorker from '../../../appWorkers/dataWorker'
 import languagesText from '../../../LanguagesData/LanguagesText'
@@ -62,8 +62,7 @@ function SaveResultButton(props) {
     return (
         <button className='save-result'
         onClick={(event) => buttonClicked(event)}
-        >
-            
+>
             Save Result
         </button>
     )
