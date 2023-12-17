@@ -80,6 +80,6 @@ const mapDispatchToProps = dispatch => ({
     setUserName: string => dispatch(setUserName(string)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen)
+const UserForm =  connect(mapStateToProps, mapDispatchToProps)(SignInScreen)
 
-// export default UserForm
+export default UserForm

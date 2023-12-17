@@ -71,7 +71,7 @@ class Navbar extends Component {
 
         let userName = this.props.userName
         let isSigning = this.props.isSigning
-        console.log(Link)
+        
         let addTxt = languagesText[this.props.language].header.titleTxt
         return (
             <header className='navbar'>
