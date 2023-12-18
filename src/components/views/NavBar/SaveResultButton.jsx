@@ -2,7 +2,7 @@
 import { connect } from 'react-redux'
 import dataWorker from '../../../appWorkers/dataWorker'
 import languagesText from '../../../LanguagesData/LanguagesText'
-import { notify } from 'react-notify-toast'
+import toast from 'react-hot-toast'
 import { setResultSaved } from "../../../redux/actions/indexActions";
 
 function mapStateToProps(state) {
@@ -28,23 +28,24 @@ function mapDispatchToProps(dispatch) {
 
 function SaveResultButton(props) {
 
-    const {sessionPoints, resultSaved, language} = props
+    const { sessionPoints, resultSaved, language } = props
 
 
     const buttonClicked = (event) => {
         event.preventDefault()
         if (sessionPoints <= 0) {
             let messageTxt = languagesText[language].alerts.alertNullPoints
-            notify.show(messageTxt, 'warning')
+            toast.error(messageTxt)
             return
         }
         if (resultSaved) {
-            notify.show("You can't save result more than once, please start new test from beginning of with the same intervals", 'warning')
+
+            toast.error("You can't save result more than once, please start new test from beginning of with the same intervals")
             return;
         }
         let date = new Date(Date.now())
         // // console.log(date.toTimeString())
-    
+
         let resultObj = {
             isSigned: props.isSigned,
             user: props.userName,
@@ -57,12 +58,12 @@ function SaveResultButton(props) {
         // dataWorker.addResult('results', resultObj)
         props.setResultSaved(true)
     }
-    
+
 
     return (
         <button className='save-result'
-        onClick={(event) => buttonClicked(event)}
->
+            onClick={(event) => buttonClicked(event)}
+        >
             Save Result
         </button>
     )

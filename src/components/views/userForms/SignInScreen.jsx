@@ -6,7 +6,7 @@ import 'firebase/compat/auth';
 // import {uiConfig} from '../../../appWorkers/firebaseWorker'
 import {setIsSigning, setIsSigned, setUserName} from "../../../redux/actions/indexActions"
 import {connect} from "react-redux"
-import { notify } from 'react-notify-toast'
+import toast from 'react-hot-toast';
 
 const uiConfig =  props => ({
     // Popup signin flow rather than redirect flow.
@@ -28,7 +28,7 @@ const uiConfig =  props => ({
             props.setIsSigned(true)
             props.setIsSigning(false)
             let userName = authResult.user.displayName
-            notify.show(`Welcome ${userName}`)
+            toast.success(`Welcome ${userName}`)
             props.setUserName(userName)
         }
     }

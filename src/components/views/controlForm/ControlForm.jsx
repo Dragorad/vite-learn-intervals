@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import * as actions from '../../../redux/actions/indexActions.js'
 import languagesText from '../../../LanguagesData/LanguagesText.js'
 import muzWorker from '../../../appWorkers/intervalWorker.js'
-import { notify } from 'react-notify-toast'
+import toast from 'react-hot-toast'
 
 let $ = jquery
 let testIntervalData = {
@@ -56,11 +56,11 @@ class ControlForm extends Component {
         let alerts = languagesText[this.props.language].alerts
         let { timeForAnswer, numberOfTasks } = testIntervalData
         if (timeForAnswer < 2 || timeForAnswer > 20) {
-            notify.show(alerts.alertTime, 'success')
+            toast.info(alerts.alertTime)
             return
         }
         if (numberOfTasks < 2) {
-            notify.show(alerts.alertTasks, 'error')
+            toast.warning(alerts.alertTasks)
             return
         }
         let language = this.props.language
@@ -68,7 +68,7 @@ class ControlForm extends Component {
         mapForMuzWorkerGenerateTest(intervalsForTest, language)
 
         if (intervalsForTest.length === 0) {
-            notify.show(alerts.alertIntervals, 'warning')
+            toast.error(alerts.alertIntervals)
         } else {
             let bgIntervalsForTest = [...testIntervalData.intervalsForTest].map(el => el.name.bg)
             this.props.generateTestArr(

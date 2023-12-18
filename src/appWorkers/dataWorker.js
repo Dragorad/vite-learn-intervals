@@ -1,5 +1,5 @@
 import { firebaseApp } from './firebaseWorker'
-import { notify } from 'react-notify-toast'
+import toast from 'react-hot-toast'
 import { getFirestore } from 'firebase/firestore'
 // import firebase from 'firebase'
 
@@ -35,7 +35,8 @@ const dataWorker = (() => {
         document.get()
           .then(doc => {
             // let timeSaved = doc.data().timeSaved.toDate().toLocaleDateString()
-            notify.show(`result saved with id ${id}`, 'success')
+            toast.success(`result saved with id ${id}`)
+            // notify.show(`result saved with id ${id}`, 'success')
             // console.log(timeSaved)
 
           })

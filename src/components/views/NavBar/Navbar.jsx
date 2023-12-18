@@ -5,7 +5,7 @@ import LanguageButtons from './LanguageButtons'
 import { Link } from 'react-router-dom'
 // import StatusArea from '../workArea/StatusArea'
 import languagesText from '../../../LanguagesData/LanguagesText'
-import { notify } from 'react-notify-toast'
+import toast from 'react-hot-toast'
 // import firebase from 'firebase'
 import SignInScreen from '../userForms/SignInScreen'
 import SaveResultButton from './SaveResultButton.jsx'
@@ -47,15 +47,13 @@ class Navbar extends Component {
 
         this.props.setIsSigning(true)
         // this.setState({isSigning: true})
-        // notify.show(this.state)
-
     }
 
     signingOut(event) {
         event.preventDefault()
         firebase.auth().signOut()
             .then(res => {
-                notify.show(`User ${this.props.userName} has logged out`, 'warning')
+                toast.success(`User ${this.props.userName} has logged out`)
                 this.setState({ signingIn: false })
                 this.props.setIsSigned(false)
                 this.props.setUserName('guest')
@@ -71,7 +69,7 @@ class Navbar extends Component {
 
         let userName = this.props.userName
         let isSigning = this.props.isSigning
-        
+
         let addTxt = languagesText[this.props.language].header.titleTxt
         return (
             <header className='navbar'>
