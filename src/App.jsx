@@ -7,10 +7,7 @@ import Routes from './Routes'
 import store from './redux/store/indexStore'
 import { Provider } from 'react-redux'
 import Navbar from './components/views/NavBar/Navbar.jsx'
-import Notifications from 'react-notify-toast'
-// import { notifyOptions } from './notifyOptions'
-// import 'firebase/auth'
-
+import CustomToaster from './components/common/toaster/customToaster.jsx'
 
 const AppContext = createContext(null);
 const ContextProvider = ({ children }) => {
@@ -25,14 +22,9 @@ const App = () => {
       <Provider store={store}>
         <div>React Vite Learn</div>
         <Navbar />
-        {/* <Notifications
-          options={notifyOptions}
-        /> */}
+        <CustomToaster />
         <BrowserRouter>
-          {/* <React.Fragment> */}
           <Routes />
-
-          {/* </React.Fragment> */}
         </BrowserRouter>
         <Footer />
       </Provider>
