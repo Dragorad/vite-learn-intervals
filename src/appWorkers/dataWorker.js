@@ -6,8 +6,8 @@ import { getFirestore } from 'firebase/firestore'
 const dataWorker = (() => {
   // const settings = {timestampsInSnapshots: true}
   console.log('dataWorker')
-  const fire = firebaseApp
-  const db = getFirestore(fire)
+  // const fire = firebaseApp
+  // const db = getFirestore(fire)
 
 
   // db.enablePersistence()

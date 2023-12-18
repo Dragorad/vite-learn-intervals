@@ -1,6 +1,7 @@
-import {initializeApp} from 'firebase/app'
-import { firebaseConfig } from './firebaseConfig'
-import {getAuth} from 'firebase/auth'
+// import {initializeApp} from 'firebase/app'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import {firebaseConfig} from './firebaseConfig'; 
 
 // export const FirebaseContext = React.createContext(null)
 
@@ -11,5 +12,5 @@ import {getAuth} from 'firebase/auth'
 //         this.auth = app.auth()
 //     }
 // }
-export const firebaseApp = initializeApp(firebaseConfig)
-export const auth = getAuth(firebaseApp)
+export const firebaseApp = firebase.initializeApp(firebaseConfig)
+// export const auth = getAuth(firebaseApp)
