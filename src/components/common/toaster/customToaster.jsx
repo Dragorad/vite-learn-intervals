@@ -24,7 +24,7 @@ function CustomToaster() {
                         backgroundColor: '#1c6d86'
                     }
                 },
-                warning: {
+                custom: {
                     style: {
                         color: "#edf3ff",
                         backgroundColor: '#2b56da'

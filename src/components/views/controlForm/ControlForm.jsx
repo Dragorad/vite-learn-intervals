@@ -56,11 +56,11 @@ class ControlForm extends Component {
         let alerts = languagesText[this.props.language].alerts
         let { timeForAnswer, numberOfTasks } = testIntervalData
         if (timeForAnswer < 2 || timeForAnswer > 20) {
-            toast.info(alerts.alertTime)
+            toast.error(alerts.alertTime)
             return
         }
         if (numberOfTasks < 2) {
-            toast.warning(alerts.alertTasks)
+            toast.error(alerts.alertTasks)
             return
         }
         let language = this.props.language
@@ -96,6 +96,7 @@ class ControlForm extends Component {
     }
 
     render() {
+        
         return (
             <form
                 method='GET'

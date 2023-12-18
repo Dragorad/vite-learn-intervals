@@ -20,7 +20,7 @@ const App = () => {
 
 
       <Provider store={store}>
-        <div>React Vite Learn</div>
+        {/* <div>React Vite Learn</div> */}
         <Navbar />
         <CustomToaster />
         <BrowserRouter>
