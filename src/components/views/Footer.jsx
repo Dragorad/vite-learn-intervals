@@ -1,7 +1,3 @@
-import React from 'react'
-// import * as actions from '../../redux/actions/indexActions'
-// import { connect } from 'react-redux'
-// import languagesText from '../../LanguagesData/LanguagesText'
 
 export default function Footer (props) {
   // let texts = languagesText[props.language].workPane.workHeader

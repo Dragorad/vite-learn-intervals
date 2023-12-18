@@ -1,4 +1,3 @@
-import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import ControlForm from './components/views/controlForm/ControlForm'
 import WorkPaneRedux from './components/views/workArea/WorkPaneRedux'
