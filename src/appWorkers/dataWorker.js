@@ -1,13 +1,16 @@
 import { firebaseApp } from './firebaseWorker'
 import toast from 'react-hot-toast'
-import { getFirestore } from 'firebase/firestore'
+import 'firebase/compat/firestore'
+import 'firebase/compat/app'
 // import firebase from 'firebase'
+import { getFirestore } from 'firebase/firestore'
+import { collection, getDocs, addDoc } from 'firebase/firestore'
 
 const dataWorker = (() => {
   // const settings = {timestampsInSnapshots: true}
   console.log('dataWorker')
-  // const fire = firebaseApp
-  // const db = getFirestore(fire)
+  const fire = firebaseApp
+  const db = getFirestore(fire)
 
 
   // db.enablePersistence()
@@ -23,10 +26,21 @@ const dataWorker = (() => {
   //     }
   //   })
 
+  const addResult9 = async (collectionName, resultObj) => {
+    try {
+      const docRef = await addDoc(collection(collectionName), resultObj)
+      toast.success('Document written with ID: ', docRef.id)
+    }
+    catch (e) { console.error('Error adding document: ', e) }
+  }
+  
   function addResult(collectionName, resultObj) {
     // console.log('from dataWorker')
-    // console.log(resultObj)
-    db.collection(collectionName).add(resultObj)
+    console.log(resultObj)
+    addDoc()
+
+
+    collection(collectionName).add(resultObj)
       .then(function (docRef) {
         let id = docRef.id
 
@@ -43,7 +57,6 @@ const dataWorker = (() => {
 
       })
   }
-
   // const resultsQuery = db.collection('results').where('sessionPoints', '>', 0)
   //   .orderBy('sessionPoints', 'desc').limit(8)
   function getBestScores(collectionName) {
