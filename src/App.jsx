@@ -1,7 +1,6 @@
 import { createContext } from "react"
 // import './App.css'
 import { BrowserRouter } from 'react-router-dom'
-
 import Footer from './components/views/Footer'
 import Routes from './Routes'
 import store from './redux/store/indexStore'
