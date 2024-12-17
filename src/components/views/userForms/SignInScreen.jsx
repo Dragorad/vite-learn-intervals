@@ -2,13 +2,12 @@ import React from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-
 // import {uiConfig} from '../../../appWorkers/firebaseWorker'
-import {setIsSigning, setIsSigned, setUserName} from "../../../redux/actions/indexActions"
-import {connect} from "react-redux"
+import { setIsSigning, setIsSigned, setUserName } from "../../../redux/actions/indexActions"
+import { connect } from "react-redux"
 import toast from 'react-hot-toast';
 
-const uiConfig =  props => ({
+const uiConfig = props => ({
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
@@ -44,7 +43,7 @@ class SignInScreen extends React.Component {
             (user) => {
                 // console.log('user auth state is changing')
                 this.props.setIsSigning(true)
-                this.setState({isSignedIn: !!user})
+                this.setState({ isSignedIn: !!user })
                 // this.props.setIsSigned(!this.props.isSigned)
                 // this.props.setIsSigning(!this.props.isSigning)
             }
@@ -53,7 +52,6 @@ class SignInScreen extends React.Component {
 
     // Make sure we un-register Firebase observers when the component unmounts.
     componentWillUnmount() {
-
         this.props.setIsSigning(false)
         this.props.setIsSigned(true)
         this.unregisterAuthObserver()
@@ -63,8 +61,8 @@ class SignInScreen extends React.Component {
     render() {
         return (
             <div className={'sign-in-screen'}>
-                <h1>Sign in to Music intervals</h1>
-                <StyledFirebaseAuth uiConfig={uiConfig(this.props)} firebaseAuth={firebase.auth()}/>
+                <h3>Sign in to Music intervals</h3>
+                <StyledFirebaseAuth uiConfig={uiConfig(this.props)} firebaseAuth={firebase.auth()} />
             </div>
         )
     }
@@ -80,6 +78,6 @@ const mapDispatchToProps = dispatch => ({
     setUserName: string => dispatch(setUserName(string)),
 })
 
-const UserForm =  connect(mapStateToProps, mapDispatchToProps)(SignInScreen)
+const UserForm = connect(mapStateToProps, mapDispatchToProps)(SignInScreen)
 
 export default UserForm

@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 // import StatusArea from '../workArea/StatusArea'
 import languagesText from '../../../LanguagesData/LanguagesText'
 import toast from 'react-hot-toast'
-// import firebase from 'firebase'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 import SignInScreen from '../userForms/SignInScreen'
 import SaveResultButton from './SaveResultButton.jsx'
 
