@@ -12,27 +12,6 @@ const dataWorker = (() => {
   const fire = firebaseApp
   const db = getFirestore(fire)
 
-
-  // db.enablePersistence()
-  //   .catch(function (err) {
-  //     if (err.code === 'failed-precondition') {
-  //       console.log(`"Multiple tabs open, persistence can only be enabled
-  //               in one tab at a a time.
-  //               ...`)
-  //     } else if (err.code === 'unimplemented') {
-  //       console.log(`The current browser does not support all of the
-  //               features required to enable persistence
-  //               ...`)
-  //     }
-  //   })
-
-  const addResult9 = async (collectionName, resultObj) => {
-    try {
-      const docRef = await addDoc(collection(collectionName), resultObj)
-      toast.success('Document written with ID: ', docRef.id)
-    }
-    catch (e) { console.error('Error adding document: ', e) }
-  }
   
   function addResult(collectionName, resultObj) {
     // console.log('from dataWorker')
