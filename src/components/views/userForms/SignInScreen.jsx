@@ -34,9 +34,7 @@ const uiConfig = props => ({
 })
 
 class SignInScreen extends React.Component {
-    state = {
-        isSignedIn: false
-    }
+    
 
     componentDidMount() {
         this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
